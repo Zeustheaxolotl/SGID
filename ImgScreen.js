@@ -2,13 +2,14 @@
 
 class Imagescreen{
 
-	constructor(imgR,imgIR,imgV,imgUV,imgXR,){
+	constructor(imgR,imgIR,imgV,imgUV,imgXR){
+	
 		this.Rimg=imgR; 
 		this.IRimg=imgIR; 
 		this.Vimg=imgV; 
 		this.UVImg=imgUV; 
 		this.XRimg=imgXR;
-
+		
 	}
 	show(){
 		fill(0,255,0);
@@ -41,11 +42,11 @@ class Imagescreen{
 					img.pixels[index]+=this.IRimg.pixels[index];	
 				}
 
-				if(this.UVimg!=undefined){
+				//if(this.UVimg!=undefined){
 					
-					img.pixels[index+2]+=this.UVimg.pixels[index];
+				//	img.pixels[index+2]+=this.UVimg.pixels[index];
 
-				}
+				//}
 
 		img.pixels[index+1]=this.Vimg.pixels[index];//green
 
