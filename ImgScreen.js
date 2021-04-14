@@ -1,5 +1,3 @@
-
-
 class Imagescreen{
 
 	constructor(imgR,imgIR,imgV,imgUV,imgXR){
@@ -7,20 +5,21 @@ class Imagescreen{
 		this.Rimg=imgR; 
 		this.IRimg=imgIR; 
 		this.Vimg=imgV; 
-		this.UVImg=imgUV; 
+		this.UVimg=imgUV; 
 		this.XRimg=imgXR;
 		
 	}
 	show(){
-		fill(0,255,0);
-		circle(200,150,30);
-		let img=createImage(525,526);
+		
+		let img=createImage(this.XRimg.width,this.XRimg.height);
 		img.loadPixels();
 		if(this.Rimg!=undefined){
 					this.Rimg.loadPixels();
 				}
 
+		//print(this.UVimg);
 		if(this.UVimg!=undefined){
+			
 					this.UVimg.loadPixels();
 						}
 		if(this.IRimg!=undefined){
@@ -42,11 +41,11 @@ class Imagescreen{
 					img.pixels[index]+=this.IRimg.pixels[index];	
 				}
 
-				//if(this.UVimg!=undefined){
+				if(this.UVimg!=undefined){
 					
-				//	img.pixels[index+2]+=this.UVimg.pixels[index];
+					img.pixels[index+2]+=this.UVimg.pixels[index];
 
-				//}
+				}
 
 		img.pixels[index+1]=this.Vimg.pixels[index];//green
 
@@ -58,7 +57,7 @@ class Imagescreen{
 		}
 	}
 	img.updatePixels();
-
+    img.resize(525,0)
 
 	image(img,0,0);
 	}
