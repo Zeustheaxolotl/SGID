@@ -19,20 +19,31 @@
  let v;
  let uv;
  let xr;
+ let oldr;
+ let oldir;
+ let oldv;
+ let olduv;
+ let oldxr;
+ let oldx; 
  
  function preload(){ //to get all of the images ready 
  	for (i=0; i<object.length; i++){
  		if(UV[i]!=undefined){
  			UVimg[i]=loadImage("Objects/"+object[i]+"/"+UV[i]);
+ 			UVimg[i].resize(1000,0);
  		}
  		if(IR[i]!=undefined){
- 			IRimg[i]=loadImage("Objects/"+object[i]+"/"+IR[i]);	
+ 			IRimg[i]=loadImage("Objects/"+object[i]+"/"+IR[i]);
+ 			IRimg[i].resize(1000,0);	
  		}
  		if(R[i]!=undefined){
- 			Rimg[i]=loadImage("Objects/"+object[i]+"/"+R[i]);	
+ 			Rimg[i]=loadImage("Objects/"+object[i]+"/"+R[i]);
+ 			Rimg[i].resize(1000,0);	
  		}
  		XRimg[i]=loadImage("Objects/"+object[i]+"/"+XR[i]);	
- 		Vimg[i]=loadImage("Objects/"+object[i]+"/"+V[i]);	
+ 		XRimg[i].resize(1000,0);
+ 		Vimg[i]=loadImage("Objects/"+object[i]+"/"+V[i]);
+ 		XRimg[i].resize(1000,0);	
  	}
  }
  function setup() {
@@ -40,7 +51,6 @@
  	background(240);
 //creating my sliders 
  	sliderR= createSlider(0,1,1,0.01);
-
  	sliderIR= createSlider(0,1,1,0.01);
  	sliderV= createSlider(0,1,1,0.01);
 
@@ -48,21 +58,23 @@
 
  	sliderXR= createSlider(0,1,1,0.01);
  	//loading my image and showing it 
+ 	//print(XRimg[x].width);
  	makeImage();
  	//imageScreen.compute(r,ir,v,uv,xr);
  	//imageScreen.show();
 
 }
  function draw() {
- r=sliderR.value();
+  r=sliderR.value();
   ir=sliderIR.value();
   v=sliderV.value();
   uv=sliderUV.value();
   xr=sliderXR.value();
   //print('HERE');
-
- //imageScreen.compute(r,ir,v,uv,xr);// reloading the image 
- imageScreen.show();
+  if((oldxr!=xr)||(oldir!=ir)||(oldv!=v)||(olduv!=uv)||(oldr!=r)||(oldx!=x)){
+ 	makeImage();
+ 	//print('here');
+ }
  	if(mouseX<1210 && mouseX>1140){//
  		if(mouseY<205 && mouseY>135){
  			fill(235);
@@ -98,14 +110,17 @@
  				if(mouseY<200 && mouseY>180){
  					x=0
  					makeImage();
+ 					
  				}
  				if (mouseY<220 && mouseY>200){
  					x=1
  					makeImage();
+ 					
  				}
  				if (mouseY<240 && mouseY>220){
  					x=2
  					makeImage();
+ 					
  				}
  				if (mouseY<260 && mouseY>240){
  					x=3
@@ -126,6 +141,12 @@
  			}
  		}
  	}
+ 	oldxr=xr;
+ 	oldir=ir;
+ 	olduv=uv;
+ 	oldv=v;
+ 	oldr=r;
+ 	oldx=x;
  }
 
  function makeImage() {
@@ -134,9 +155,6 @@
  	rect(0,0,1000,1500);
  	imageScreen = new Imagescreen(Rimg[x], IRimg[x], Vimg[x], UVimg[x], XRimg[x]);
  	imageScreen.load();
-
-
-
-
-
- }
+ 	imageScreen.compute(r,ir,v,uv,xr);// reloading the image 
+ 	imageScreen.show();
+}

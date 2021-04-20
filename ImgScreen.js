@@ -14,27 +14,44 @@ class Imagescreen{
 	}
 	load(){
 
-		this.img=createImage(this.XRimg.width,this.XRimg.height);
+		
 		 // creating the image and loading pixels from the not combined images. 
-		 this.img.loadPixels();
+		 	this.XRimg.resize(1000,0);
+			this.Vimg.resize(1000,0);
+
+
+	
+		
 		 if(this.Rimg!=undefined){
+		 	this.Rimg.resize(1000,0);
 		 	this.Rimg.loadPixels();
+		 	
 		 }
 
 		//print(this.UVimg);
 		if(this.UVimg!=undefined){
-			
+				this.UVimg.resize(1000,0);
 			this.UVimg.loadPixels();
 		}
 		if(this.IRimg!=undefined){
+				this.IRimg.resize(1000,0);
 			this.IRimg.loadPixels();	
 		}
 		this.XRimg.loadPixels();
 		this.Vimg.loadPixels();
+		this.img=createImage(this.XRimg.width,this.XRimg.height);
+		this.img.loadPixels();
+		print("Vimg width:"+str(this.Vimg.width));
+		print("Vimg height:"+str(this.Vimg.height));
+		print("img width:"+str(this.img.width));
+		print("img height:"+str(this.img.height));
+		
+		
+		
 	}
 	compute(r,ir,v,uv,xr){ 
 		// building the image
-		print('here');
+		//print('here');
 		this.r=r; // info from the sliders
 		this.ir=ir; 
 		this.v=v; 
@@ -45,8 +62,8 @@ class Imagescreen{
 		for(let x=0; x<this.img.width; x++){
 			for(let y=0; y<this.img.height; y++){
 				let index = (x+y*this.img.width)*4;
-				this.img.width=this.XRimg.width; 
-				this.img.height=this.XRimg.height; 
+				//this.img.width=this.XRimg.width; 
+				//this.img.height=this.XRimg.height; 
 				this.img.pixels[index]=0;//reseting the pixels so its the same image over time 
 				this.img.pixels[index+1]=0;
 				this.img.pixels[index+2]=0; 
@@ -78,12 +95,12 @@ class Imagescreen{
 	}
 
 	this.img.updatePixels();// adds the pixels we just computed to the image
-	this.img.resize(1000,0);
-	print(this.img.height);
+	//this.img.resize(1000,0);
+	//print(this.img.height);
 }
 show(){
-
-				image(this.img,0,0);
+	//this.img.resize(1000,0);
+	image(this.img,0,0);
 
 	}
 
