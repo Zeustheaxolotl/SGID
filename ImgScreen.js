@@ -28,7 +28,6 @@ class Imagescreen{
 		 	
 		 }
 
-		//print(this.UVimg);
 		if(this.UVimg!=undefined){
 				this.UVimg.resize(1000,0);
 			this.UVimg.loadPixels();
@@ -41,17 +40,12 @@ class Imagescreen{
 		this.Vimg.loadPixels();
 		this.img=createImage(this.XRimg.width,this.XRimg.height);
 		this.img.loadPixels();
-		print("Vimg width:"+str(this.Vimg.width));
-		print("Vimg height:"+str(this.Vimg.height));
-		print("img width:"+str(this.img.width));
-		print("img height:"+str(this.img.height));
 		
 		
 		
 	}
 	compute(r,ir,v,uv,xr){ 
 		// building the image
-		//print('here');
 		this.r=r; // info from the sliders
 		this.ir=ir; 
 		this.v=v; 
@@ -96,7 +90,6 @@ class Imagescreen{
 
 	this.img.updatePixels();// adds the pixels we just computed to the image
 	//this.img.resize(1000,0);
-	//print(this.img.height);
 }
 show(){
 	//this.img.resize(1000,0);

@@ -50,30 +50,37 @@
  	createCanvas(2500,1500);
  	background(240);
 //creating my sliders 
+	textSize(25);
  	sliderR= createSlider(0,1,1,0.01);
+ 	sliderR.position(1100,500);
+ 	text("Radio",1250,515);
  	sliderIR= createSlider(0,1,1,0.01);
+ 	sliderIR.position(1100,540);
+	text("Infrared",1250,555);
  	sliderV= createSlider(0,1,1,0.01);
-
+	sliderV.position(1100,580);
+	text("Visible",1250,595);
  	sliderUV= createSlider(0,1,1,0.01);
-
+ 	sliderUV.position(1100,620);
+	text("Ultraviolet",1250,635);
  	sliderXR= createSlider(0,1,1,0.01);
+ 	sliderXR.position(1100,660);
+ 	text("X-ray",1250,675);
+
  	//loading my image and showing it 
- 	//print(XRimg[x].width);
  	makeImage();
  	//imageScreen.compute(r,ir,v,uv,xr);
  	//imageScreen.show();
 
 }
  function draw() {
-  r=sliderR.value();
+   r=sliderR.value();
   ir=sliderIR.value();
   v=sliderV.value();
   uv=sliderUV.value();
   xr=sliderXR.value();
-  //print('HERE');
   if((oldxr!=xr)||(oldir!=ir)||(oldv!=v)||(olduv!=uv)||(oldr!=r)||(oldx!=x)){
  	makeImage();
- 	//print('here');
  }
  	if(mouseX<1210 && mouseX>1140){//
  		if(mouseY<205 && mouseY>135){
@@ -105,8 +112,6 @@
  	if(dropdown=true){
  		if(mouseX<1210 &&mouseX>1140){
  			if(mouseIsPressed){
- 				print(mouseY);
- 				print(mouseX);
  				if(mouseY<200 && mouseY>180){
  					x=0
  					makeImage();
