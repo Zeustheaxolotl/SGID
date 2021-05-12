@@ -65,7 +65,7 @@ class Imagescreen{
 				if(this.Rimg!=undefined){//Radio is represented by the color yellow
 					this.img.pixels[index]+=this.Rimg.pixels[index]*this.r/1;//red
 					this.img.pixels[index+1]+=this.Rimg.pixels[index]*this.r/1;//green
-
+print(pixels[index]);
 				}
 				if(this.IRimg!=undefined){ // IR is represented by the color red
 
@@ -93,7 +93,7 @@ class Imagescreen{
 }
 show(){
 	//this.img.resize(1000,0);
-	image(this.img,0,0);
+	image(this.img,0,50);
 
 	}
 

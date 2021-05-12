@@ -26,6 +26,7 @@
  let oldxr;
  let oldx; 
  
+ 
  function preload(){ //to get all of the images ready 
  	for (i=0; i<object.length; i++){
  		if(UV[i]!=undefined){
@@ -49,6 +50,7 @@
  function setup() {
  	createCanvas(2500,1500);
  	background(240);
+ 
 //creating my sliders 
 	textSize(25);
  	sliderR= createSlider(0,1,1,0.01);
@@ -70,11 +72,11 @@
  	//loading my image and showing it 
  	makeImage();
  	//imageScreen.compute(r,ir,v,uv,xr);
- 	//imageScreen.show();
+ 	}
 
-}
+
  function draw() {
-   r=sliderR.value();
+ 	
   ir=sliderIR.value();
   v=sliderV.value();
   uv=sliderUV.value();
@@ -151,8 +153,10 @@
  	olduv=uv;
  	oldv=v;
  	oldr=r;
- 	oldx=x;
- }
+ 	oldx=x; 
+
+}
+
 
  function makeImage() {
  	stroke(240);
@@ -163,3 +167,5 @@
  	imageScreen.compute(r,ir,v,uv,xr);// reloading the image 
  	imageScreen.show();
 }
+
+
